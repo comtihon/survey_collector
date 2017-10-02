@@ -18,7 +18,7 @@ public class KafkaReceiver {
 
     @KafkaListener(topics = "${spring.kafka.topic}")
     public void receive(ConsumerRecord<String, QuestionDTO> consumerRecord) {
-        LOGGER.info("received payload='{}'", consumerRecord);
+        LOGGER.debug("got answered question: '{}'", consumerRecord);
         statisticsFormer.write(consumerRecord.value());
     }
 }
